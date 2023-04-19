@@ -1,82 +1,159 @@
-.container {
-    display: grid;
-    margin: 30px auto;
-    /* fit 9:16 to width */
-    height: 100vh;
-    width: 71vh;
-    background-color: white;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.2fr; 
-    gap: 7px 7px; 
-    grid-template-areas: 
-    "P1 . P3 . P5"
-    "P1 P2 P3 P4 P5"
-    ". P2 . P4 ."
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"; 
+/* z-index order */
+
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+  margin: 0;
 }
-.P1 {   
-    grid-area: P1;
-    /* each small top pattern has single color, I feel white background fits with bright "macaron" color, it gives people a sort of warm and happy feeling*/
-    background-color: rgb(241, 206, 110);
-    background-image: linear-gradient(180deg, white, rgb(241, 206, 110) 20% );
-    /*All the edges that are next to the other pattern I've use a dotted border, it means they're related. And all the outer borders I've drawn solid lines. Cause I want the picture to look like a whole. */
-    border: solid;
-    border-right-style: dotted;
-    border-bottom-style: dotted;
-    border-top-left-radius: 80px 80px;
- }
-.P2 { 
-    grid-area: P2;
-    background-color: rgb(245, 179, 103);
-    background-image: linear-gradient(180deg, white, rgb(245, 179, 103) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P3 { 
-    grid-area: P3;
-    background-color: rgb(205, 157, 233);
-    background-image: linear-gradient(180deg, white, rgb(205, 157, 233) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P4 { 
-    grid-area: P4;
-    background-color: rgba(218, 77, 147, 0.8);
-    background-image: linear-gradient(180deg, white, rgba(218, 77, 147, 0.8) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P5 { 
-    grid-area: P5;
-    background-color: rgb(240, 131, 131);
-    background-image: linear-gradient(180deg, white, rgb(240, 131, 131) 20% );
-    border: solid;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
-    border-top-right-radius: 80px 80px;
- }
-.P6 { 
-    grid-area: P6;
-    /*The bottom pattern color is combined all top patterns color, it's a mixed color, show the wonderful effect. */
-    background-color: rgb(240, 131, 131);
-    background-image:  linear-gradient(
-        217deg,
-        rgba(255, 0, 0, 0.8),
-        rgba(255, 0, 0, 0) 70.71%
-      ), linear-gradient(127deg, rgb(219, 195, 130 ), rgba(0, 255, 0, 0) 70.71%),
-      linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(112, 212, 151, 0) 70.71%);
-      border: solid;
-      border-top-style: dotted;
-      border-bottom-left-radius: 80px 80px;
-      border-bottom-right-radius: 80px 80px;
-  };
+
+:root{
+  --col-01:#cc7f26;
+  --col-02:#010501;
+  --col-03:#10106915;
+  --col-04:#dfd6a5;
+  --border: 1px solid var(--col-02);
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--col-01);
+  color: var(--col-02);
+  padding: 2vw;
+}
+
+/* Modify grid-template-columns to create a 4-column layout，information would be more orderliness */
+.RecipeBox{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1rem;
+  border: var(--border);
+  background-color: var(--col-04);
+  padding: 1rem;
+}
+
+.FilterSection{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.FilterBox{
+  margin-right: 0.5rem;
+}
+
+.FilterButton{
+  background-color: var(--col-01);
+  color: #e2c4c4;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.FilterButton:hover{
+  background-color: var(--col-03);
+}
+
+.SelectedFilter{
+  color: #e7c6c6;
+  padding: 0.5rem 1rem;
+}
+
+.RecipeLink {
+
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+}
+
+.RecipeName{
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.Author{
+  font-size: 0.8rem;
+}
+
+.RecipeImageContainer{
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%; 
+}
+
+.RecipeImg{
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.RecipeImg:hover{
+  transform: scale(1.1);
+}
+
+.Attribution{
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+
+.Publisher {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.Cuisine {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.TimeToCook {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.SkillLevel {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.Course {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.Servings {
+
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.Dietary {
  
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.DatePublished {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.DateUpdated {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.SpecialEquipment {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+
