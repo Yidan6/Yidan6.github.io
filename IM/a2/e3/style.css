@@ -12,9 +12,9 @@
 :root{
   /* first two colours come from Kuroi's Manga Pallete Palette */
   /* https://lospec.com/palette-list/manga-pallete */
-  --col-01:#171219;
+  --col-01:#464641;
   --col-02:#f2fbeb;
-  --col-03:#5252ff;
+  --col-03:#66348f;
   --col-04:#b6e878;
   font-size: 16px;
   /* scroll behaviour makes the <a> links to ids scroll to position over time rather than immediately */
@@ -25,12 +25,50 @@ body{
   padding: 1rem;
   background-color: var(--col-02);
   color: var(--col-01);
-  transition: 8s;/*light to dark*/
+  transition: 3s;/*light to dark*/
 }
 
-.button{
-  color: #5f2e73;
+#motion-container{
+  display: flex;
+  flex-direction: column;
+}
+
+#transition-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#transition1:hover{
   background-color: red;
+  color: aqua;
+  transition: background-color 1s, color 1s;
+}
+
+#animation-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.animation-container li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.animation-container li a {
+  height: 8rem;
+  background-color: blue;
+  flex-grow: 1;
+  animation: cycleColour 2s infinite;
+}
+
+
+.button{
+  color:rgb(var(--col-01-r), var(--col-01-g), var(--col-01-b));
+  background-color: rgb(var(--col-02-r), var(--col-02-g), var(--col-02-b));;
 }
 
 nav {
@@ -144,6 +182,7 @@ li ul{
   height: 1rem;
   background-color: var(--col-03);
   animation: cycleColour 5s infinite;
+  animation-delay: 2s;
   /* we also initially set display to none so it only shows once the link is clicked */
   display: none;
 }
@@ -152,7 +191,7 @@ li ul{
     background-color: blue;
   }
   20% {
-    background-color: greenyellow;
+    background-color: rgb(10, 12, 6);
   }
   55%{
     transform: rotate(45deg) scale(0.2);
