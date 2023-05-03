@@ -41,7 +41,7 @@ body{
 }
 
 #transition1:hover{
-  background-color: red;
+  background-color: rgb(84, 58, 90);
   color: aqua;
   transition: background-color 1s, color 1s;
 }
@@ -141,6 +141,7 @@ li ul{
   position: sticky;
   top: 1rem;
 }
+
 
 /* code for loading page */
 
