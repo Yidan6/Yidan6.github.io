@@ -1,6 +1,5 @@
 /*
-  This one CSS file is imported into both index.html AND hosono.html so you need to be careful that it 
-  works for both.
+  I uses animations and transitioning background colors to give the user a sense that the page is constantly changing and progressing. By combining light and dark shades with contrasting colors, it can make the text more legible.
 */
 
 *{
