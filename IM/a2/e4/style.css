@@ -1,82 +1,148 @@
-.container {
-    display: grid;
-    margin: 30px auto;
-    /* fit 9:16 to width */
-    height: 100vh;
-    width: 71vh;
-    background-color: white;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.2fr; 
-    gap: 7px 7px; 
-    grid-template-areas: 
-    "P1 . P3 . P5"
-    "P1 P2 P3 P4 P5"
-    ". P2 . P4 ."
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"
-    "P6 P6 P6 P6 P6"; 
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+  margin: 0;
 }
-.P1 {   
-    grid-area: P1;
-    /* each small top pattern has single color, I feel white background fits with bright "macaron" color, it gives people a sort of warm and happy feeling*/
-    background-color: rgb(241, 206, 110);
-    background-image: linear-gradient(180deg, white, rgb(241, 206, 110) 20% );
-    /*All the edges that are next to the other pattern I've use a dotted border, it means they're related. And all the outer borders I've drawn solid lines. Cause I want the picture to look like a whole. */
-    border: solid;
-    border-right-style: dotted;
-    border-bottom-style: dotted;
-    border-top-left-radius: 80px 80px;
+
+:root{
+  --col-01:#222323;
+  --col-02:#f0f6f0;
+  --col-03:#5252ff;
+  --col-04:#b6e878;
+  --col-05:#bcbdbc;
+  --col-06:#6f6f6f;
+  --border: 1px solid var(--col-02);
+}
+
+.video-player-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.video-element-wrapper{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+#videoElement{
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+#videoPlayOverlay{
+  width: 8rem;
+  height: 8rem;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-self: center;
+  align-self: center;
+  opacity: 0.6;
+  display: none;
+}
+
+.video-controls-wrapper{
+  display: flex;
+  justify-content: center;
+}
+#controlsWrapper{
+  display: none;
+}
+/* For fullscreen button when the mouse is over the button it will zoom in and when the button is clicked the fullscreen command will be executed. And the loop button I created a rotation animation effect. */
+.video-control-button{
+  background-color: var(--col-03);
+  width: 2rem;
+  height: 2rem;
+  padding: .1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-control-button.loop {
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-control-button.zoom {
+  transform: scale(1.2);
+}
+
+.video-control-button:hover{
+  transform: scale(1.2);
+  background-color: var(--col-03);
+  color: var(--col-06);
+  border: 1px solid var(--col-02);
+}
+
+.video-control-button:active{
+  background-color: var(--col-03);
+  color:var(--col-06);
+}
+
+.button-icon{
+  pointer-events: none;
+}
+
+#playButton{
+  background-image: url('./icons/play.svg');
+}
+
+#muteButton{
+  background-image: url('./icons/mute.svg');
+}
+
+#fullScreenButton{
+  background-image: url('./icons/fullScreen.svg');
+}
+ #loopButton{
+  background-image: url('./icons/loop.svg');
  }
-.P2 { 
-    grid-area: P2;
-    background-color: rgb(245, 179, 103);
-    background-image: linear-gradient(180deg, white, rgb(245, 179, 103) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P3 { 
-    grid-area: P3;
-    background-color: rgb(205, 157, 233);
-    background-image: linear-gradient(180deg, white, rgb(205, 157, 233) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P4 { 
-    grid-area: P4;
-    background-color: rgba(218, 77, 147, 0.8);
-    background-image: linear-gradient(180deg, white, rgba(218, 77, 147, 0.8) 20% );
-    border: solid;
-    border-right-style: dotted;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
- }
-.P5 { 
-    grid-area: P5;
-    background-color: rgb(240, 131, 131);
-    background-image: linear-gradient(180deg, white, rgb(240, 131, 131) 20% );
-    border: solid;
-    border-left-style: dotted;
-    border-bottom-style: dotted;
-    border-top-right-radius: 80px 80px;
- }
-.P6 { 
-    grid-area: P6;
-    /*The bottom pattern color is combined all top patterns color, it's a mixed color, show the wonderful effect. */
-    background-color: rgb(240, 131, 131);
-    background-image:  linear-gradient(
-        217deg,
-        rgba(255, 0, 0, 0.8),
-        rgba(255, 0, 0, 0) 70.71%
-      ), linear-gradient(127deg, rgb(219, 195, 130 ), rgba(0, 255, 0, 0) 70.71%),
-      linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(112, 212, 151, 0) 70.71%);
-      border: solid;
-      border-top-style: dotted;
-      border-bottom-left-radius: 80px 80px;
-      border-bottom-right-radius: 80px 80px;
-  };
  
+ .video-progress-bar {
+/* I added new color variable --col-04 for setting gradient color of timeline*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  height: 2rem;
+  flex-grow: 1;
+  cursor: pointer;
+  background-color: var(--col-01);
+  box-shadow: 0 1px 2px var(--col-02) inset;
+}
+
+::-moz-progress-bar {
+  background-color: var(--col-02);
+}
+
+::-webkit-progress-bar {
+  background-color: var(--col-01);
+  box-shadow: 0 1px 2px var(--col-02) inset;
+}
+
+::-webkit-progress-value {
+  background-color: var(--col-02);
+  background-image: linear-gradient(45deg, var(--col-03) 0%, var(--col-04) 50%, var(--col-03) 100%);
+  background-size: 200% 100%;
+  animation: loadingAnimation 4s linear infinite;
+}
+
+.timeline-loading {
+  background-image: repeating-linear-gradient(45deg, var(--col-03) 0% 2%, transparent 2% 4%, var(--col-04) 4%);
+  background-size: 200% 100%;
+  animation: loadingAnimation 4s linear infinite;
+}
+
+@keyframes loadingAnimation {
+  100% {
+    background-position: 50% 0%;
+  }
+}
