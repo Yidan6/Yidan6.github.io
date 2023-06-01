@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Website</title>
+  <link rel="stylesheet" href="homepage.css">
+  <audio id="buttonSound" src="sounds/homepage.wav"></audio>
+</head>
+<body>
+  <audio id="backgroundMusic" src="sounds/bgmusic.wav" autoplay loop></audio>
+  <header>
+    <h1>Welcome to Coffee Website</h1>
+  </header>
+  <main>
+    <section class="intro">
+      <h2>Are you ready to enjoy?</h2>
+      <p>Coffee is one of the world's most popular beverages. But is more than a beverage, it could be a memory, an anticipation, a lifetime of consoling moments of modest pleasure woven into our lives~</p>
+    </section>
+    <section class="background-image">
+        <img src="images/background.jpg" alt="">
+    </section>
+    <section class="cta-button">
+      <a href="index.html" onclick="playButtonSound()">Shop</a>
+    </section>
+    <section class="cta-button">
+      <a href="aboutus.html" onclick="playButtonSound()">About us</a>
+    </section>
+  </main>
+  <script src="homepage.js"></script>
+</body>
+</html>

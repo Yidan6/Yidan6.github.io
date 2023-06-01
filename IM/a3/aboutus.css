@@ -1,0 +1,25 @@
+:root{
+    --col-01:#7c430d;
+    --col-02:#fff;
+    --col-03:#050505;
+    --col-04:#644629;
+  }
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--col-01);
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--col-02);
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+  }
+  p {
+    line-height: 1.5;
+  }

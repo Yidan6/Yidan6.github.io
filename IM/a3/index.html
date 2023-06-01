@@ -1,21 +1,77 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="en" dir="ltr">
   <head>
-
-    <meta charset="utf-8"  name="viewport"  content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet"  href="style.css">
+    <meta charset="utf-8">
+    <title>shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <audio id="buttonSound" src="sounds/shop.wav"></audio>
+  </head>
+  <body>
+    <audio id="backgroundMusic" src="sounds/bgmusic.wav" autoplay loop></audio>
+    <div class="wrapper">
+      <div class="cart-nav">
+        <div class="icon">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+        </div>
+        <div class="item-count">0</div>
+      </div>
+      <div class="cart-items">
+        <table>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <img src="images/coffee beans.webp" alt="">
+        <div class="content">
+          <div class="row">
+            <div class="details">
+              <span>Coffee beans</span>
+              <p>best organic beans 1kg</p>
+            </div>
+            <div class="price">$25</div>
+          </div>
+          <div class="buttons">
+            <button>Buy Now</button>
+            <button class="cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/gift box.webp" alt="">
+        <div class="content">
+          <div class="row">
+            <div class="details">
+              <span>Gift box</span>
+              <p>Premium gift package</p>
+            </div>
+            <div class="price">$10</div>
+          </div>
+          <div class="buttons">
+            <button>Buy Now</button>
+            <button class="cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/coffee cup.jpg" alt="">
+        <div class="content">
+          <div class="row">
+            <div class="details">
+              <span>Coffee cup</span>
+              <p>handmade ceramic</p>
+            </div>
+            <div class="price">$20</div>
+          </div>
+          <div class="buttons">
+            <button>Buy Now</button>
+            <button class="cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
-
-  </head>
-
-   <body>
-
-    <h1>This is a test</h1>
-
-   </body>
-
+  </body>
 </html>
